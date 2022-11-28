@@ -56,3 +56,10 @@ void assign(int x, int y)
 }; //Присвоювання дробу нового значення
 
 };
+
+int main()
+{
+    cout<<"Hello World";
+
+    return 0;
+}
