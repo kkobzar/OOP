@@ -2,7 +2,17 @@ class Rational{
 
 private:
 int num, den; // Стан класу - чисельник і знаменник дробу
-int gcd() const; // Метод класу - знаходження найбільшого
+int gcd() const
+{
+    int hcf = 1;
+    for(int i = 1; i <= num || i <= den; i++)
+    {
+        if(num % i == 0 && den % i == 0)
+            hcf = i;
+    }
+
+    return hcf;
+}; // Метод класу - знаходження найбільшого
 //спільного дільника
 void reduce(); // Метод класу - скорочення дробу
 void correct(); // Метод класу - корекція дробу
@@ -19,9 +29,12 @@ Rational()
 }; //Порожній конструктор
 Rational(int num)
 {
-
+    assign(num,num);
 }; //Конструктор з 1 аргументом
-Rational(int num, int den); //Конструктор з 2 аргументами
+Rational(int num, int den)
+{
+    assign(num,den);
+}; //Конструктор з 2 аргументами
 
 /* Деструктор класу */
 ~Rational();
@@ -34,11 +47,11 @@ Rational add(const Rational &opd)const; //Додавання дробів
 void assign(int x, int y)
 {
     if(y > 0){
-        this.den = y
+        this->den = y;
     }else{
-        this.den = 1
+        this->den = 1;
     }
-    this.num = x
+    this->num = x;
 
 }; //Присвоювання дробу нового значення
 
