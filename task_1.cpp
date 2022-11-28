@@ -58,7 +58,7 @@ Rational(int num, int den)
 void print()const
 {
     cout<<this->gcd();
-    this::reduce();
+    this->reduce();
 }; //Вивід значення дробу в потік
 Rational add(const Rational &opd)const; //Додавання дробів
 
