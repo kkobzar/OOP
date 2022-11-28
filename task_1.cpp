@@ -19,7 +19,17 @@ int gcd() const
 };
  // Метод класу - знаходження найбільшого
 //спільного дільника
-void reduce(); // Метод класу - скорочення дробу
+void reduce()
+{
+    int num1 = num;
+    int num2 = den;
+    int denom = this->gcd();
+    num1/=denom;
+    num2/=denom;
+
+    cout<< "Lowest Fraction : "<<num1<<"/"<<num2;
+
+}; // Метод класу - скорочення дробу
 void correct(); // Метод класу - корекція дробу
 
 protected:
@@ -48,6 +58,7 @@ Rational(int num, int den)
 void print()const
 {
     cout<<this->gcd();
+    this->reduce();
 }; //Вивід значення дробу в потік
 Rational add(const Rational &opd)const; //Додавання дробів
 
