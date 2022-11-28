@@ -63,6 +63,8 @@ void assign(int x, int y)
 
 int main()
 {
+
+    Rational r = new Rational(5,10);
     cout<<"Hello World";
 
     return 0;
