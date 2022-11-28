@@ -67,7 +67,7 @@ int main()
 {
 
     Rational* r = new Rational(5,10);
-    cout<<r.gcd();
+    cout<<r->gcd();
 
     return 0;
 }
