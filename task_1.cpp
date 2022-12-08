@@ -19,7 +19,7 @@ int gcd() const
 };
  // Метод класу - знаходження найбільшого
 //спільного дільника
-void reduce()
+void reduce() const
 {
     int num1 = num;
     int num2 = den;
