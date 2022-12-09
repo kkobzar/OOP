@@ -30,7 +30,10 @@ void reduce() const
     cout<< "Lowest Fraction : "<<num1<<"/"<<num2;
 
 }; // Метод класу - скорочення дробу
-void correct(); // Метод класу - корекція дробу
+void correct()
+{
+
+}; // Метод класу - корекція дробу
 
 protected:
 /* Відсутній: можна зовсім не включати дану частину класу,
@@ -52,25 +55,33 @@ Rational(int num, int den)
 }; //Конструктор з 2 аргументами
 
 /* Деструктор класу */
-~Rational();
+
 
 /* Методи класу: селектори */
-void print()const
+void print()
 {
-    cout<<this->gcd();
-    this->reduce();
+    cout << gcd();
+    cout << '\n';
+    reduce();
+    cout << '\n';
 }; //Вивід значення дробу в потік
-Rational add(const Rational &opd)const; //Додавання дробів
+
+Rational add(const Rational &opd)const
+{
+    cout << opd.gcd() << endl;
+    cout << gcd() << endl;
+    return opd;
+}; //Додавання дробів
 
 /* Модифікатор */
 void assign(int x, int y)
 {
     if(y > 0){
-        this->den = y;
+        den = y;
     }else{
-        this->den = 1;
+        den = 1;
     }
-    this->num = x;
+    num = x;
 
 }; //Присвоювання дробу нового значення
 
@@ -79,8 +90,14 @@ void assign(int x, int y)
 int main()
 {
 
-    Rational* r = new Rational(5,10);
-    //cout<<r->gcd();
-    r->print();
+    Rational r(5,10);
+    r.print();
+
+    const Rational& r2 = *new Rational(4,8);
+
+    r.add(r2);
+    //const Rational &r2(4,8);
+
+    //Rational::add(r2);
     return 0;
 }
