@@ -69,18 +69,15 @@ void print()
 Rational add(const Rational &opd)const
 {
     Rational r(num*opd.getDen() + den*opd.getNum(),den*opd.getDen());
-    cout << r.getNum() << endl;
-    cout << r.getDen() << endl;
     r.gcd();
     return r;
 }; //Додавання дробів
 
 Rational sub(const Rational &opd)const
 {
-    Rational r(num*opd.getDen() + den*opd.getNum(),den*opd.getDen());
-    cout << r.getNum() << endl;
-    cout << r.getDen() << endl;
+    Rational r(num*opd.getDen() - den*opd.getNum(),den*opd.getDen());
     r.gcd();
+    r.print();
     return r;
 }; //Віднімання дробів
 
@@ -113,6 +110,8 @@ int main()
     const Rational& r2 = *new Rational(4,5);
 
     r.add(r2);
+
+    r.sub(r2);
 
     return 0;
 }
