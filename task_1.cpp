@@ -69,15 +69,14 @@ void print()
 Rational add(const Rational &opd)const
 {
     Rational r(num*opd.getDen() + den*opd.getNum(),den*opd.getDen());
-    r.gcd();
+    r.reduce();
     return r;
 }; //Додавання дробів
 
 Rational sub(const Rational &opd)const
 {
     Rational r(num*opd.getDen() - den*opd.getNum(),den*opd.getDen());
-    r.gcd();
-    r.print();
+    r.reduce();
     return r;
 }; //Віднімання дробів
 
@@ -105,7 +104,6 @@ int main()
 {
 
     Rational r(5,10);
-    //r.print();
 
     const Rational& r2 = *new Rational(4,5);
 
