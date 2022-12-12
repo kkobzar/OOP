@@ -75,6 +75,15 @@ Rational add(const Rational &opd)const
     return r;
 }; //Додавання дробів
 
+Rational sub(const Rational &opd)const
+{
+    Rational r(num*opd.getDen() + den*opd.getNum(),den*opd.getDen());
+    cout << r.getNum() << endl;
+    cout << r.getDen() << endl;
+    r.gcd();
+    return r;
+}; //Віднімання дробів
+
 /* Модифікатор */
 void assign(int x, int y)
 {
