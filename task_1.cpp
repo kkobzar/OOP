@@ -80,6 +80,20 @@ Rational sub(const Rational &opd)const
     return r;
 }; //Віднімання дробів
 
+Rational mul(const Rational &opd)const
+{
+    Rational r(num*opd.getNum(),den*opd.getDen());
+    r.reduce();
+    return r;
+}; //Множення дробів
+
+Rational div(const Rational &opd)const
+{
+    Rational r(num*opd.getDen() - den*opd.getNum(),den*opd.getDen());
+    r.reduce();
+    return r;
+}; //Ділення дробів
+
 /* Модифікатор */
 void assign(int x, int y)
 {
