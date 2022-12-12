@@ -19,13 +19,14 @@ int gcd() const
 };
  // Метод класу - знаходження найбільшого
 //спільного дільника
-void reduce() const
+void reduce()
 {
     int num1 = num;
     int num2 = den;
     int denom = this->gcd();
     num1/=denom;
     num2/=denom;
+    assign(num1,num2);
 
     cout<< "Lowest Fraction : "<<num1<<"/"<<num2;
 
@@ -60,17 +61,18 @@ Rational(int num, int den)
 /* Методи класу: селектори */
 void print()
 {
-    cout << gcd();
-    cout << '\n';
+    cout << gcd() << endl;
     reduce();
-    cout << '\n';
+    cout << endl;
 }; //Вивід значення дробу в потік
 
 Rational add(const Rational &opd)const
 {
-    cout << opd.gcd() << endl;
-    cout << gcd() << endl;
-    return opd;
+    Rational r(num*opd.getDen() + den*opd.getNum(),den*opd.getDen());
+    cout << r.getNum() << endl;
+    cout << r.getDen() << endl;
+    r.gcd();
+    return r;
 }; //Додавання дробів
 
 /* Модифікатор */
@@ -84,20 +86,24 @@ void assign(int x, int y)
     num = x;
 
 }; //Присвоювання дробу нового значення
-
+int getNum()const {
+    return num;
+};
+int getDen() const{
+    return den;
+};
 };
 
+//testing function
 int main()
 {
 
     Rational r(5,10);
-    r.print();
+    //r.print();
 
-    const Rational& r2 = *new Rational(4,8);
+    const Rational& r2 = *new Rational(4,5);
 
     r.add(r2);
-    //const Rational &r2(4,8);
 
-    //Rational::add(r2);
     return 0;
 }
