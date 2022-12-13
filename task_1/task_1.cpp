@@ -89,8 +89,8 @@ Rational mul(const Rational &opd)const
 
 Rational div(const Rational &opd)const
 {
-    opd.assign(opd.getDen(),opd.getNum());
-    Rational r(num*opd.getNum(),den*opd.getDen());
+    Rational revR(opd.getDen(),opd.getNum());
+    Rational r(num*revR.getNum(),den*revR.getDen());
     r.reduce();
     return r;
 }; //Ділення дробів
@@ -124,7 +124,7 @@ int main()
 
     r.add(r2);
 
-    r.sub(r2);
+    r.div(r2).print();
 
     return 0;
 }
