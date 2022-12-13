@@ -143,7 +143,7 @@ int main(int argc, char const *argv[])
 	arr.OutputArr();
 
 	arr.bubbleSort();
-	cout << "******"<<endl << "Array after sort:" << endl << "******" << endl;
+	cout << "******"<<endl << "Array after sort:" << endl << "*******" << endl;
 	arr.OutputArr();
 
 
