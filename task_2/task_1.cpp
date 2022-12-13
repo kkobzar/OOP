@@ -139,17 +139,17 @@ int main(int argc, char const *argv[])
 
 	//task 1 test
 	
-/*	arr.InputArr();
+	arr.InputArr();
 	arr.OutputArr();
 
 	arr.bubbleSort();
 	cout << "******"<<endl << "Array after sort:" << endl << "******" << endl;
-	arr.OutputArr();*/
+	arr.OutputArr();
 
 
 	//task 2 test
 
-/*	int m = 3, n = 4, c = -5;
+	int m = 3, n = 4, c = -5;
 	
 	int** a = new int*[m];
 
@@ -177,7 +177,7 @@ int main(int argc, char const *argv[])
 	for (int i = 0; i < m; i++) 
 		delete[] a[i];
 
-	delete[] a;*/
+	delete[] a;
 
 
 	//task 3 test
