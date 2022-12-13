@@ -4,6 +4,7 @@
 //CustomArray::bubbleSort(): 
 //Розробити метод-член класу впорядкування по зростанню методом бульбашки одновимірного динамічного масиву.
 
+//CustomArray::arrFrom2d(): 
 //Розробити метод-член класу для створення нового одновимірного масиву 
 //з кількості всіх негативних елементів кожного рядка заданого двовимірного динамічного масиву.
 
@@ -27,7 +28,7 @@ public:
 	};
 	~CustomArray()
 	{
-		delete array;
+		free(array);
 	};
 
 	void InputArr()
@@ -40,6 +41,16 @@ public:
 			cout << "#"<<i<<':';
 			cin >> array[i];
 		}
+	};
+
+	bool setArrItem(int index, int val)
+	{
+		if (index > size)
+		{
+			return false;
+		}
+		array[index] = val;
+		return true;
 	};
 
 	void OutputArr()
@@ -64,18 +75,86 @@ public:
 			}
 		}
 	};
+
+	static CustomArray arrFrom2d(int** arr, int xSize, int ySize)
+	{
+		int resMax[xSize*ySize];
+		int len = 0;
+
+		for (int i = 0; i < xSize; i++) {
+			for (int j = 0; j < ySize; j++) {
+				if (arr[i][j] < 0)
+				{
+					resMax[len] = arr[i][j];
+					len++;
+				}
+			}
+		}
+
+		//make result array of size needed
+
+		CustomArray res(len);
+
+		for (int i = 0; i < len; i++)
+		{
+			res.setArrItem(i,resMax[i]);
+		}
+
+		return res;
+	};
 	
 };
 
 int main(int argc, char const *argv[])
 {
 
-	CustomArray arr(8);
+	CustomArray arr(3);
 
-	arr.InputArr();
+	//task 1 test
+	
+/*	arr.InputArr();
 	arr.OutputArr();
+
 	arr.bubbleSort();
 	cout << "******"<<endl << "Array after sort:" << endl << "******" << endl;
-	arr.OutputArr();
+	arr.OutputArr();*/
+
+
+	//task 2 test
+
+	int m = 3, n = 4, c = -5;
+	
+	int** a = new int*[m];
+
+	for (int i = 0; i < m; i++) {
+		a[i] = new int[n];	
+	}
+
+	srand((unsigned int)time(NULL));
+	// Fill the 2D array with random values
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+
+		a[i][j] = rand() % 30 - 20;
+		}
+	}
+
+
+	CustomArray res = CustomArray::arrFrom2d(a,m,n);
+	cout<<endl<<"---------"<<endl;
+
+	res.OutputArr();
+	/*for (int i = 0; i < sizeof(res)/sizeof(*res); i++)
+	{
+		cout << res[i] << " ";
+	}*/
+
+cout<<endl<<"---------"<<endl;
+
+	for (int i = 0; i < m; i++) 
+		delete[] a[i];
+
+	delete[] a;
+
 	return 0;
 }
