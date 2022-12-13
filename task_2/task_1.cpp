@@ -8,6 +8,11 @@
 //Розробити метод-член класу для створення нового одновимірного масиву 
 //з кількості всіх негативних елементів кожного рядка заданого двовимірного динамічного масиву.
 
+
+//CustomArray::sqRootArr():
+//Розробити функцію визначення кубічного кореня з заданого члена і підпрограму, що використовує цю функцію для
+//перетворення кожного елемента одновимірного динамічного масиву.
+
 #include <stdlib.h>
 #include <iostream>
 #include <malloc.h>
@@ -19,6 +24,20 @@ class CustomArray
 private:
 	int* array;
 	int size;
+
+
+	//https://stackoverflow.com/a/40528142/11526784
+	int sqRoot(int number)
+	{
+	    double error = 0.00001; //define the precision of your result
+	    double s = number;
+
+	    while ((s - number / s) > error) //loop until precision satisfied 
+	    {
+	        s = (s + number / s) / 2;
+	    }
+	    return (int)s;
+	};
 
 public:
 	CustomArray(int arrS)
@@ -102,6 +121,14 @@ public:
 
 		return res;
 	};
+
+	void sqRootArr()
+	{
+		for (int i = 0; i < size; i++)
+		{
+			array[i] = sqRoot(array[i]);
+		}
+	};
 	
 };
 
@@ -122,7 +149,7 @@ int main(int argc, char const *argv[])
 
 	//task 2 test
 
-	int m = 3, n = 4, c = -5;
+/*	int m = 3, n = 4, c = -5;
 	
 	int** a = new int*[m];
 
@@ -144,17 +171,21 @@ int main(int argc, char const *argv[])
 	cout<<endl<<"---------"<<endl;
 
 	res.OutputArr();
-	/*for (int i = 0; i < sizeof(res)/sizeof(*res); i++)
-	{
-		cout << res[i] << " ";
-	}*/
+	cout<<endl<<"---------"<<endl;
 
-cout<<endl<<"---------"<<endl;
-
+	//free memory
 	for (int i = 0; i < m; i++) 
 		delete[] a[i];
 
-	delete[] a;
+	delete[] a;*/
+
+
+	//task 3 test
+
+	arr.InputArr();
+	arr.sqRootArr();
+	arr.OutputArr();
+
 
 	return 0;
 }
