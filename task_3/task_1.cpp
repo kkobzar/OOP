@@ -22,7 +22,7 @@ private:
 public:
 	FileManager()
 	{
-		file.open(FILE_PATH,ios::app);
+		file.open(FILE_PATH,ios::out);
 	};
 	~FileManager()
 	{
