@@ -48,9 +48,9 @@ public:
 		cout<< endl;
 	};
 
-	/*bool operator!=(char a, char b){
-		return a != b;
-	};*/
+	bool operator!=(char a){
+		return list[0] != a;
+	};
 
 	MyChar operator[](int i){
 		if (i<size)
@@ -72,7 +72,6 @@ public:
 
 	int* operator,( int i){
 		int * res = new int(2);
-		//res[0] = i;
 		res[1] = this->list[0];
 		return res;
 	}
@@ -94,5 +93,8 @@ int main(int argc, char const *argv[])
 	c.Output();
 
 
+	bool test = c!='f';
+
+	cout << test << endl;
 	return 0;
 }
