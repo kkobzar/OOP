@@ -19,7 +19,16 @@ L[з, i];
 
 using namespace std;
 
-class MyChar
+class MyCharAncessor
+{
+public:
+	virtual void Input() = 0;
+	virtual void Output() = 0;
+
+	
+};
+
+class MyChar : public MyCharAncessor
 {
 private:
 	char* list;
